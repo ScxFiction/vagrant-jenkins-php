@@ -41,11 +41,13 @@ sudo apt-get install oracle-java8-installer -y
 echo "-- Installing Jenkins --"
 sudo apt-get install jenkins -y
 echo "-- Downloading Jenkins Cli and installing plugins --"
-wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+sleep 200
+wget --tries=10 http://localhost:8080/jnlpJars/jenkins-cli.jar
 java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
 java -jar jenkins-cli.jar -s http://localhost:8080 safe-restart
 
 echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.profile 
+rsync -avu --delete "/var/lib/jenkins/jobs" "/home/vagrant"
 
 
 	
