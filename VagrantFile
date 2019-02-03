@@ -9,9 +9,13 @@ Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+  # After vagrant uo
+  #config.trigger.after :up do |trigger|
+  #  trigger.name = "After vagrant up"
+  #  trigger.info = "Funciona?"
+  #end
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://vagrantcloud.com/search.
+  # Ubuntu box
   config.vm.box = "ubuntu/trusty64"
   config.vm.define :Jenkins_PHP do |web_config|
   end
@@ -45,7 +49,8 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "jobs", "/home/vagrant/jobs"
+  config.vm.synced_folder "jobs", "/var/lib/jenkins/jobs",
+    owner: "jenkins"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -68,7 +73,5 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :shell, privileged: false, :path => "install.sh"
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  
 end
