@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="mt-5">Job Creation</h3>
+    <hr />
+  </div>
+</div>
+<!-- Form -->
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+  <fieldset>
+    <legend>Details</legend>
+    <div class="row">
+      <!-- Name -->
+      <div class="col-lg-5">
+        <div class="control-group">
+          <label for="jobname">Name</label>
+          <input type="text" name="jobname" id="jobname" class="form-control" ngModel #jobname="ngModel" required />
+          <div *ngIf="jobname.invalid && jobname.touched" class="alert alert-danger">Job name is required</div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <!-- Builders -->
+  <fieldset class="mt-3">
+    <legend>Builders</legend>
+    <div class="row">
+      <!-- Options -->
+      <div class="col-lg-5">
+        <div class="control-group">
+          <label for="builders">Options</label>
+          <div class="input-group">
+            <select 
+              name="builders" 
+              id="builders" 
+              class="form-control" 
+              [(ngModel)]="builder" 
+              #builders="ngModel">
+              <option value="">Select a builder</option>
+              <option *ngFor="let builderOption of builderOptions" value="{{ builderOption }}">
+                {{ builderOption }}
+              </option>
+            </select>
+            <span class="input-group-append">
+              <button 
+                class="btn btn-outline-secondary" 
+                (click)="onAddBuilder(builders.value)"
+                type="button" 
+                [disabled]="builders.value == ''">
+                <i class="fa fa-plus"></i> Add
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <table class="table table-striped mt-3">
+          <tr *ngFor="let selectedBuilder of selectedBuilders">
+            <td class="align-middle">  
+              <img src="/assets/images/{{ selectedBuilder | lowercase }}.png" /> 
+            </td>
+            <td class="align-middle text-center">
+                {{ selectedBuilder }}
+            </td>
+            <td>
+              <input class="form-control" type="text" name="parameters" />
+            </td>
+            <td class="text-right">
+              <button class="btn btn-danger" (click)="onRemoveBuilder(selectedBuilder)"><i class="fa fa-trash"></i> Remove</button>  
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="mt-3">
+    <legend>Tools Configuration</legend>
+
+  </fieldset>
+  <!-- Buttons Form -->
+  <div class="row">
+    <div class="col-lg-12 text-right">
+      <hr />
+      <a routerLink="/" class="btn btn-primary mr-2">
+        <i class="fa fa-backward"></i> Back
+      </a>
+      <button type="submit" class="btn btn-success" [disabled]="!f.valid">
+        <i class="fa fa-save"></i> Save
+      </button>
+    </div>
+  </div>
+</form>

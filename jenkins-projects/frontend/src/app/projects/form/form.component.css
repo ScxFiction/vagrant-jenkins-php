@@ -1,0 +1,53 @@
+select#buiders{
+    height: 40px;
+        
+}
+select#builders option[value="composer"] { 
+    background-image:url(/assets/images/composer.png);
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: left;
+    padding: 5px 0px 0px 50px;
+    height: 30px;
+}
+
+select#builders option[value="npm"] { 
+    background-image:url(/assets/images/npm.png);
+    background-size: 40px 18px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding: 5px 0px 0px 50px;
+    height: 30px;
+}
+
+select#builders option[value="bower"] { 
+    background-image:url(/assets/images/bower.png);
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding: 5px 0px 0px 50px;
+    height: 30px;
+}
+
+select#builders option[value="grunt"] { 
+    background-image:url(/assets/images/grunt.png);
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding: 5px 0px 0px 50px;
+    height: 30px;
+}
+
+select#builders option[value="gulp"] { 
+    background-image:url(/assets/images/gulp.png);
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    padding: 5px 0px 0px 50px;
+    height: 30px;
+}
+
+/* select#builders:focus option:checked { 
+    background: orange;
+} */
