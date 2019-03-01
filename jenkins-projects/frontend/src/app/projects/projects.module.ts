@@ -3,20 +3,23 @@ import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BuilderComponent } from './form/builder/builder.component';
 
 
 @NgModule({
   declarations: [
     ListComponent, 
-    FormComponent
+    FormComponent, 
+    BuilderComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    ReactiveFormsModule
   ],
   exports: [
     ListComponent,
