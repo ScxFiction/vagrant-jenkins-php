@@ -35,9 +35,12 @@ composer global require phploc/phploc
 echo "-- Installing PHPMD --"
 composer global require phpmd/phpmd
 echo "-- Installing JAVA --"
-echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
-sudo apt-get install oracle-java8-installer -y
+#echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+#echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+#sudo apt-get install oracle-java8-installer -y
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install openjdk-8-jre -y
 echo "-- Installing Jenkins --"
 sudo apt-get install jenkins -y
 echo "-- Downloading Jenkins Cli and installing plugins --"
