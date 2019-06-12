@@ -1,11 +1,11 @@
 echo "-- Let's start our provision --"
-sudo apt-add-repository ppa:ondrej/php
-sudo add-apt-repository ppa:webupd8team/java
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
 sudo apt-get update
 echo "-- Install PHP --"
-sudo apt-get install -y php7.2 libapache2-mod-php7.2 php7.2-cli php7.2-common php7.2-mbstring php7.2-gd php7.2-intl php7.2-xml php7.2-mysql php7.2-zip php7.2-curl php7.2-xdebug php7.2-soap
+sudo apt-get install -y php php-cli libapache2-mod-php php-cli php-common php-mbstring php-gd php-intl php-xml php-mysql php-zip php-curl php-xdebug php-soap
+sudo apt-get install -y git
+sudo apt-get install -y nodejs
 php -v
 echo "-- Installing Composer --"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
