@@ -1,1 +1,6 @@
 /.vagrant/
+/jenkins-projects/frontend/yarn.lock
+.DS_Store
+**/.DS_Store
+/jenkins-projects/.DS_Store
+/.DS_Store

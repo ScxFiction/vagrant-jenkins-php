@@ -50,7 +50,7 @@ var=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var  install-plugin checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
 java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var safe-restart
 sleep 200
-curl cp /vagrant/config.xml /home/vagrant/config.xml \
+cp /vagrant/config.xml /home/vagrant/config.xml \
      java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var create-job php-template
 echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.profile
 sleep 200
