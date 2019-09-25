@@ -4,27 +4,27 @@ import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+//import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { BuilderComponent } from './form/builder/builder.component';
 
 
 @NgModule({
   declarations: [
-    ListComponent, 
-    FormComponent, 
+    ListComponent,
+    FormComponent,
     BuilderComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
-    BsDropdownModule,
+  //  NgbDropdown,
     ReactiveFormsModule
   ],
   exports: [
     ListComponent,
     FormComponent,
-    BsDropdownModule
+   // NgbDropdown
   ]
 })
 export class ProjectsModule { }

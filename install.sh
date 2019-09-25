@@ -1,11 +1,12 @@
 echo "-- Let's start our provision --"
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+sudo add-apt-repository ppa:ondrej/php
+sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 echo "-- Install PHP --"
-sudo apt-get install -y php php-cli libapache2-mod-php php-cli php-common php-mbstring php-gd php-intl php-xml php-mysql php-zip php-curl php-xdebug php-soap
+sudo apt-get install -y php7.3 php7.3-cli libapache2-mod-php7.3 php7.3-cli php7.3-common php7.3-mbstring php7.3-gd php7.3-intl php7.3-xml php7.3-mysql php7.3-zip php7.3-curl php7.3-xdebug php7.3-soap
 sudo apt-get install -y git
-sudo apt-get install -y nodejs
 php -v
 echo "-- Installing Composer --"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -38,8 +39,8 @@ echo "-- Installing JAVA --"
 #echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 #echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 #sudo apt-get install oracle-java8-installer -y
-sudo add-apt-repository ppa:openjdk-r/ppa
-sudo apt-get update
+# sudo add-apt-repository ppa:openjdk-r/ppa
+# sudo apt-get update
 sudo apt-get install openjdk-8-jre -y
 echo "-- Installing Jenkins --"
 sudo apt-get install jenkins -y
@@ -50,7 +51,7 @@ var=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var  install-plugin checkstyle cloverphp crap4j dry htmlpublisher jdepend plot pmd violations warnings xunit
 java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var safe-restart
 sleep 200
-cp /vagrant/config.xml /home/vagrant/config.xml \
+curl -L https://raw.githubusercontent.com/renatolaranjo/vagrant-jenkins-php/master/config.xml | \
      java -jar jenkins-cli.jar -s http://localhost:8080 -auth admin:$var create-job php-template
 echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.profile
 sleep 200
