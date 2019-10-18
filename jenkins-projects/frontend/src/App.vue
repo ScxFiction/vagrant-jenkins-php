@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
+  <div>
     <Header></Header>
     <div class="container">
       <router-view></router-view>
-    </div>
+     </div>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Body from './components/Body.vue'
 export default {
   name: 'app',
   components: {
-    Header,
-    Body
+    Header
   }
 }
 </script>
+

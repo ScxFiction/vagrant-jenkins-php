@@ -1,32 +1,36 @@
 <template>
-  <div>
-    <!-- Actions -->
-    <div class="row">
-      <div class="col text-left">
-        <b-link class="btn btn-secondary" href="/">Back</b-link>
-      </div>
-      <div class="col text-right">
-        <b-link class="btn btn-success" href="/">Save</b-link>
-      </div>
-    </div>
-    <!-- Form -->
-    <div class="row mt-3">
-    <!-- Pdepend -->
-      <div class="col ">
-        <b-form-group label="PDepend" label-for="pdepend">
-          <b-form-input id="pdepend" placeholder="Enter path" required></b-form-input>
-        </b-form-group>
-      </div>
-      <!-- Pdepend -->
-      <div class="col">
-        <b-form-group label="phpcpd" label-for="pdepend">
-          <b-form-input id="pdepend" placeholder="Enter path" required></b-form-input>
-        </b-form-group>
-      </div>
-    </div>
-  </div>
+  <b-card>
+    <b-card-header header="New Job"></b-card-header>
+    <b-card-body>
+      <b-tabs>
+        <b-tab title="Form">
+          <Form ></Form>
+        </b-tab>
+        <b-tab title="build.xml">
+          <Preview @create-xml="loadXml"></Preview>
+        </b-tab>
+      </b-tabs>
+    </b-card-body>
+  </b-card>
 </template>
 
 <script>
-export default {};
+import Form from "./Form";
+import Preview from "./Preview";
+export default {
+  components: {
+    Form,
+    Preview
+  },
+  data() {
+    return {
+      xml: ''
+    }
+  },
+  methods: {
+    loadXml(e) {
+      this.xml = e.build;
+    }
+  }
+};
 </script>
